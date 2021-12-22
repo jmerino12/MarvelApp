@@ -1,5 +1,36 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+    ext{
+        //Implementations
+        androidxCore_vesion = "1.7.0"
+        appCompat_version = "1.4.0"
+        material_version ="1.4.0"
+        constraint_version = "2.1.2"
+
+        //TestImplementations
+        junit_version ="4.13.2"
+
+        //AndroidTestImplementations
+        junitExt_version ="1.1.3"
+        espresso_vesion ="3.4.0"
+
+        androidLibs = [
+                androidxCore : "androidx.core:core-ktx:$androidxCore_vesion",
+                appCompat : "androidx.appcompat:appcompat:$appCompat_version",
+                material: "com.google.android.material:material:$material_version",
+                constraintLayout : "androidx.constraintlayout:constraintlayout:$constraint_version"
+        ]
+
+        testLibs = [
+                junit : "junit:junit:$junit_version"
+        ]
+
+        androidTestLibs = [
+                testJunitEx: "androidx.test.ext:junit:$junitExt_version",
+                spresso : "androidx.test.espresso:espresso-core:$espresso_vesion"
+        ]
+
+    }
     repositories {
         google()
         mavenCentral()
