@@ -5,16 +5,15 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.jmb.domain.service.SerieService
-import com.jmb.infrastructure.repository.SerieRepository
-import com.jmb.infrastructure.server.TheMarvelDb
 import com.jmb.usecase.serieusecase.GetSeries
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val app = (application as MarvelApp)
         val model: SerieViewModel by viewModels {
-            VMFactory(GetSeries(SerieService(repository = (application as MarvelApp).repository)))
+            VMFactory(GetSeries(app.repository))
         }
         model.getSeries()
         model.data.observe(this, {
