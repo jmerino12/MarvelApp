@@ -1,33 +1,46 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext{
+    ext {
         //Implementations
         androidxCore_vesion = "1.7.0"
         appCompat_version = "1.4.0"
-        material_version ="1.4.0"
+        material_version = "1.4.0"
         constraint_version = "2.1.2"
+        okhttpInterceptor_vesion = "4.9.3"
+        retrofit_version = "2.9.0"
+        retrofitGson_version = "2.9.0"
+        viewModel_version = "2.4.0"
+        activity_version = "1.4.0"
 
         //TestImplementations
-        junit_version ="4.13.2"
+        junit_version = "4.13.2"
 
         //AndroidTestImplementations
-        junitExt_version ="1.1.3"
-        espresso_vesion ="3.4.0"
+        junitExt_version = "1.1.3"
+        espresso_vesion = "3.4.0"
 
         androidLibs = [
-                androidxCore : "androidx.core:core-ktx:$androidxCore_vesion",
-                appCompat : "androidx.appcompat:appcompat:$appCompat_version",
-                material: "com.google.android.material:material:$material_version",
-                constraintLayout : "androidx.constraintlayout:constraintlayout:$constraint_version"
+                androidxCore    : "androidx.core:core-ktx:$androidxCore_vesion",
+                appCompat       : "androidx.appcompat:appcompat:$appCompat_version",
+                material        : "com.google.android.material:material:$material_version",
+                constraintLayout: "androidx.constraintlayout:constraintlayout:$constraint_version",
+                viewModel       : "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModel_version",
+                activity        : "androidx.activity:activity-ktx:$activity_version"
         ]
 
         testLibs = [
-                junit : "junit:junit:$junit_version"
+                junit: "junit:junit:$junit_version"
         ]
 
         androidTestLibs = [
                 testJunitEx: "androidx.test.ext:junit:$junitExt_version",
-                spresso : "androidx.test.espresso:espresso-core:$espresso_vesion"
+                spresso    : "androidx.test.espresso:espresso-core:$espresso_vesion"
+        ]
+
+        libs = [
+                okhttpLoginInterceptor: "com.squareup.okhttp3:logging-interceptor:$okhttpInterceptor_vesion",
+                retrofit              : "com.squareup.retrofit2:retrofit:$retrofit_version",
+                retrofitGsonConverter : "com.squareup.retrofit2:converter-gson:$retrofitGson_version",
         ]
 
     }
