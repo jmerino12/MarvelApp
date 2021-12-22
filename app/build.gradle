@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -41,5 +42,7 @@ dependencies {
 
     implementation androidLibs.values()
     testImplementation testLibs.values()
+    implementation libs.values()
+    kapt androidKaptLibs.values()
     androidTestImplementation androidTestLibs.values()
 }

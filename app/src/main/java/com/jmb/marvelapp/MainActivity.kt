@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val model: SerieViewModel by viewModels {
-            VMFactory(GetSeries(SerieService(SerieRepository(TheMarvelDb("https://gateway.marvel.com/v1/public/")))))
+            VMFactory(GetSeries(SerieService(repository = (application as MarvelApp).repository)))
         }
         model.getSeries()
         model.data.observe(this, {

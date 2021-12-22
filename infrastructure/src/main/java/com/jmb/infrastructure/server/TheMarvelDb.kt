@@ -12,7 +12,7 @@ class TheMarvelDb(baseUrl: String) {
         OkHttpClient.Builder().addInterceptor(this).build()
     }
 
-    val service = Retrofit.Builder()
+    val service: TheMarvelDbService = Retrofit.Builder()
         .baseUrl(baseUrl)
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())

@@ -1,20 +1,19 @@
-package com.jmb.domain.aggregates
+package com.jmb.infrastructure.database.entity
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+
+@Entity
 data class Serie(
-    val characters: Characters?,
-    val comics: Comics?,
-    val creators: Creators?,
     val description: String?,
     val endYear: Int,
-    val events: Events?,
-    val id: Int,
+    @PrimaryKey val id: Int,
     val modified: String,
     val previous: String?,
     val rating: String,
     val resourceURI: String,
     val startYear: Int,
-    val stories: Stories?,
     val title: String,
     val type: String,
-    val urls: List<Url>?
 )
