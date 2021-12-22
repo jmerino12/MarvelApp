@@ -2,6 +2,7 @@ package com.jmb.marvelapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.jmb.domain.service.SerieService
 import com.jmb.infrastructure.repository.SerieRepository
@@ -16,6 +17,9 @@ class MainActivity : AppCompatActivity() {
             VMFactory(GetSeries(SerieService(SerieRepository(TheMarvelDb("https://gateway.marvel.com/v1/public/")))))
         }
         model.getSeries()
+        model.data.observe(this, {
+            Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+        })
         setContentView(R.layout.activity_main)
     }
 }
