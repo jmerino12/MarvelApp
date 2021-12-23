@@ -7,9 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmb.domain.aggregates.Serie
 import com.jmb.usecase.serieusecase.GetSeries
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SerieViewModel(private val getSeries: GetSeries) : ViewModel() {
+@HiltViewModel
+class SerieViewModel @Inject constructor(private val getSeries: GetSeries) : ViewModel() {
     private val _data = MutableLiveData<List<Serie>>()
     val data: LiveData<List<Serie>> = _data
     fun getSeries() {
@@ -20,7 +23,6 @@ class SerieViewModel(private val getSeries: GetSeries) : ViewModel() {
                 Log.e("error", e.message.toString())
             }
         }
-
 
     }
 }

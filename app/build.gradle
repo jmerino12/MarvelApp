@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -33,13 +34,16 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
     implementation project(':infrastructure')
     implementation project(':domain')
     implementation project(':usecase')
-
     implementation androidLibs.values()
     testImplementation testLibs.values()
     implementation libs.values()

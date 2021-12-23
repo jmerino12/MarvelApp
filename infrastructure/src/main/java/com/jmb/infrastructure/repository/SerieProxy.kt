@@ -2,8 +2,9 @@ package com.jmb.infrastructure.repository
 
 import com.jmb.domain.aggregates.Serie
 import com.jmb.domain.repository.SerieRepository
+import javax.inject.Inject
 
-class SerieProxy(
+class SerieProxy @Inject constructor(
     private val remoteRepository: SerieRetrofitRepository,
     private val localRepository: SerieRoomRepository,
     private val internetRepository: InternetRepository
@@ -13,11 +14,7 @@ class SerieProxy(
     override suspend fun getAll(): List<Serie> {
         if (internetRepository.checkConnectionInternet()) {
             if (localRepository.isEmpty()) {
-                val series = remoteRepository.getSeries(
-                    apiKey = "4a1434b727e8bfa82a978ffd281c6bed",
-                    hash = "fe2f99e22ffdfcafd0723eee722abf45",
-                    ts = "1"
-                )
+                val series = remoteRepository.getSeries()
                 localRepository.saveSeries(series)
             }
         }

@@ -12,6 +12,7 @@ buildscript {
         viewModel_version = "2.4.0"
         activity_version = "1.4.0"
         room_version = "2.4.0"
+        hilt_version = "2.40.1"
 
         //TestImplementations
         junit_version = "4.13.2"
@@ -31,6 +32,7 @@ buildscript {
 
         androidKaptLibs = [
                 roomCompiler: "androidx.room:room-compiler:$room_version",
+                hiltCompiler: "com.google.dagger:hilt-android-compiler:$hilt_version"
         ]
 
         testLibs = [
@@ -46,7 +48,9 @@ buildscript {
                 okhttpLoginInterceptor: "com.squareup.okhttp3:logging-interceptor:$okhttpInterceptor_vesion",
                 retrofit              : "com.squareup.retrofit2:retrofit:$retrofit_version",
                 retrofitGsonConverter : "com.squareup.retrofit2:converter-gson:$retrofitGson_version",
-                room                  : "androidx.room:room-ktx:$room_version"
+                room                  : "androidx.room:room-ktx:$room_version",
+                hilt            : "com.google.dagger:hilt-android:$hilt_version"
+
         ]
 
     }
@@ -57,7 +61,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.4"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0"
-
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.40.1'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

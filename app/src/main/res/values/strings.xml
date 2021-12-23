@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MarvelApp</string>
+    <string name="apiKey">4a1434b727e8bfa82a978ffd281c6bed</string>
 </resources>

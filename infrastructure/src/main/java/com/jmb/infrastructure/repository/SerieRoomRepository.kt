@@ -7,9 +7,9 @@ import com.jmb.infrastructure.anticorruption.toRoom
 import com.jmb.infrastructure.database.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class SerieRoomRepository(db: AppDatabase) : SerieLocalRepository {
-
+class SerieRoomRepository @Inject constructor(db: AppDatabase) : SerieLocalRepository {
     private val marvelDao = db.marvelDao()
 
     override suspend fun isEmpty(): Boolean =
