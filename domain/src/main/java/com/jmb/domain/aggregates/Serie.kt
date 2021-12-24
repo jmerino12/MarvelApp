@@ -8,6 +8,7 @@ data class Serie(
     val endYear: Int,
     val events: Events?,
     val id: Int,
+    val thumbnail: Thumbnail,
     val modified: String,
     val previous: String?,
     val rating: String,

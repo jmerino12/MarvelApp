@@ -9,13 +9,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class SerieRoomRepository @Inject constructor(db: AppDatabase) : SerieLocalRepository {
+class SerieRoomRepository @Inject constructor(db: AppDatabase) : SerieLocalRepository<Serie> {
     private val marvelDao = db.marvelDao()
 
     override suspend fun isEmpty(): Boolean =
         withContext(Dispatchers.IO) { marvelDao.serieCount() <= 0 }
 
-    override suspend fun saveSeries(series: List<Serie>) = withContext(Dispatchers.IO) {
+    override suspend fun save(series: List<Serie>) = withContext(Dispatchers.IO) {
         marvelDao.insertSeries(series.map { it.toRoom() })
     }
 

@@ -13,7 +13,8 @@ buildscript {
         activity_version = "1.4.0"
         room_version = "2.4.0"
         hilt_version = "2.40.1"
-
+        nav_version = "2.3.5"
+        glide_version = "4.12.0"
         //TestImplementations
         junit_version = "4.13.2"
 
@@ -28,11 +29,14 @@ buildscript {
                 constraintLayout: "androidx.constraintlayout:constraintlayout:$constraint_version",
                 viewModel       : "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModel_version",
                 activity        : "androidx.activity:activity-ktx:$activity_version",
+                navigation      : "androidx.navigation:navigation-fragment-ktx:$nav_version",
+                navigationUI    : "androidx.navigation:navigation-ui-ktx:$nav_version",
+                glide           : "com.github.bumptech.glide:glide:$glide_version"
         ]
 
         androidKaptLibs = [
-                roomCompiler: "androidx.room:room-compiler:$room_version",
-                hiltCompiler: "com.google.dagger:hilt-android-compiler:$hilt_version"
+                roomCompiler : "androidx.room:room-compiler:$room_version",
+                hiltCompiler : "com.google.dagger:hilt-android-compiler:$hilt_version"
         ]
 
         testLibs = [
@@ -49,8 +53,7 @@ buildscript {
                 retrofit              : "com.squareup.retrofit2:retrofit:$retrofit_version",
                 retrofitGsonConverter : "com.squareup.retrofit2:converter-gson:$retrofitGson_version",
                 room                  : "androidx.room:room-ktx:$room_version",
-                hilt            : "com.google.dagger:hilt-android:$hilt_version"
-
+                hilt                  : "com.google.dagger:hilt-android:$hilt_version"
         ]
 
     }
@@ -66,7 +69,6 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
-
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

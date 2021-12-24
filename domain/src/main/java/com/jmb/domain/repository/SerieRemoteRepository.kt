@@ -2,6 +2,6 @@ package com.jmb.domain.repository
 
 import com.jmb.domain.aggregates.Serie
 
-interface SerieRemoteRepository {
-    suspend fun getSeries(): List<Serie>
+interface SerieRemoteRepository<T> {
+    suspend fun getData(): List<T>
 }

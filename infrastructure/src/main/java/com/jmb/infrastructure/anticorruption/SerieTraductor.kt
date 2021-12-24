@@ -20,11 +20,22 @@ fun SerieServer.toDomain(): SerieDomain = SerieDomain(
     stories = stories.toDomain(),
     title = title,
     type = type,
-    urls = urls.map { it.toDomain() }
+    urls = urls.map { it.toDomain() },
+    thumbnail = thumbnail.toDomain()
 )
 
 fun SerieDomain.toRoom(): SerieRoom = SerieRoom(
-    description, endYear, id, modified, previous, rating, resourceURI, startYear, title, type
+    description,
+    endYear,
+    id,
+    modified,
+    previous,
+    rating,
+    resourceURI,
+    startYear,
+    title,
+    type,
+    thumbnail = thumbnail.toRoom()
 )
 
 fun SerieRoom.toDomain(): SerieDomain = SerieDomain(
@@ -43,6 +54,6 @@ fun SerieRoom.toDomain(): SerieDomain = SerieDomain(
     events = null,
     comics = null,
     characters = null,
-    creators = null
-
+    creators = null,
+    thumbnail = thumbnail.toDomain()
 )

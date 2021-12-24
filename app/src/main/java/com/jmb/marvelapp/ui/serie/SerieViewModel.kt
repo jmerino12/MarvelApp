@@ -1,4 +1,4 @@
-package com.jmb.marvelapp
+package com.jmb.marvelapp.ui.serie
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -20,7 +20,7 @@ class SerieViewModel @Inject constructor(private val getSeries: GetSeries) : Vie
             try {
                 _data.value = getSeries.invoke()
             } catch (e: Exception) {
-                Log.e("error", e.message.toString())
+                Log.e("nbvnbv", e.message.toString())
             }
         }
 

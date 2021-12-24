@@ -20,6 +20,8 @@ data class Serie(
     val id: Int,
     @SerializedName("modified")
     val modified: String,
+    @SerializedName("thumbnail")
+    val thumbnail: Thumbnail,
     @SerializedName("previous")
     val previous: String?,
     @SerializedName("rating")

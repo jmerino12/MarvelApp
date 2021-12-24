@@ -41,10 +41,13 @@ android {
 }
 
 dependencies {
+
     implementation project(':infrastructure')
     implementation project(':domain')
     implementation project(':usecase')
     implementation androidLibs.values()
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt 'com.github.bumptech.glide:compiler:4.12.0'
     testImplementation testLibs.values()
     implementation libs.values()
     kapt androidKaptLibs.values()

@@ -3,7 +3,7 @@ package com.jmb.infrastructure.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class Data(
+data class Data<T>(
     @SerializedName("count")
     val count: Int,
     @SerializedName("limit")
@@ -11,7 +11,7 @@ data class Data(
     @SerializedName("offset")
     val offset: Int,
     @SerializedName("results")
-    val results: List<Serie>,
+    val results: List<T>,
     @SerializedName("total")
     val total: Int
 )
