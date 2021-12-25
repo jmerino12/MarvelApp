@@ -1,7 +1,7 @@
 package com.jmb.infrastructure.repository
 
 import com.jmb.domain.aggregates.Serie
-import com.jmb.domain.repository.SerieLocalRepository
+import com.jmb.domain.repository.LocalRepository
 import com.jmb.infrastructure.anticorruption.toDomain
 import com.jmb.infrastructure.anticorruption.toRoom
 import com.jmb.infrastructure.database.AppDatabase
@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class SerieRoomRepository @Inject constructor(db: AppDatabase) : SerieLocalRepository {
+class SerieRoomRepository @Inject constructor(db: AppDatabase) : LocalRepository<Serie> {
     private val marvelDao = db.marvelDao()
 
     override suspend fun isEmpty(): Boolean =

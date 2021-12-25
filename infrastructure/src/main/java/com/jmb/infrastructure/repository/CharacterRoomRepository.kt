@@ -2,6 +2,7 @@ package com.jmb.infrastructure.repository
 
 import com.jmb.domain.aggregates.Character
 import com.jmb.domain.repository.CharacterLocalRepository
+import com.jmb.domain.repository.LocalRepository
 import com.jmb.infrastructure.anticorruption.toDomain
 import com.jmb.infrastructure.anticorruption.toRoom
 import com.jmb.infrastructure.database.AppDatabase
@@ -10,7 +11,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class CharacterRoomRepository @Inject constructor(db: AppDatabase) :
-    CharacterLocalRepository {
+    CharacterLocalRepository, LocalRepository<Character> {
     private val marvelDao = db.marvelDao()
 
 

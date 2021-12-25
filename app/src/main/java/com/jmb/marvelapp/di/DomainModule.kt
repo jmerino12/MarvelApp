@@ -1,5 +1,6 @@
 package com.jmb.marvelapp.di
 
+import com.jmb.domain.aggregates.Character
 import com.jmb.domain.service.CharacterService
 import com.jmb.domain.service.SerieService
 import com.jmb.infrastructure.database.AppDatabase

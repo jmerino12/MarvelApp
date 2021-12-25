@@ -1,7 +1,6 @@
 package com.jmb.domain.repository
 
 
-
-interface SerieRemoteRepository<T> {
+interface WebSeviceRepository<T> {
     suspend fun getAll(): List<T>
 }

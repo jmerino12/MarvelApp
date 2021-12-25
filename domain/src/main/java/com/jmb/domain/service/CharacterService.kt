@@ -2,10 +2,10 @@ package com.jmb.domain.service
 
 import com.jmb.domain.aggregates.Character
 import com.jmb.domain.repository.CharacterLocalRepository
-import com.jmb.domain.repository.SerieRemoteRepository
+import com.jmb.domain.repository.WebSeviceRepository
 
 class CharacterService(
-    private val remoteRepository: SerieRemoteRepository<Character>,
+    private val remoteRepository: WebSeviceRepository<Character>,
     private val localRepository: CharacterLocalRepository,
 ) {
 

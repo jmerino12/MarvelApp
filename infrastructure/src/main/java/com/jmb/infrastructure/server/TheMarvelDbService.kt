@@ -7,6 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface TheMarvelDbService {
+
     @GET("series")
     suspend fun listSeries(
         @Query("apikey") apiKey: String,

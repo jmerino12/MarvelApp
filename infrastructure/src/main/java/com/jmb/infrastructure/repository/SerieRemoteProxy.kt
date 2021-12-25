@@ -1,14 +1,14 @@
 package com.jmb.infrastructure.repository
 
 import com.jmb.domain.aggregates.Serie
-import com.jmb.domain.repository.SerieRemoteRepository
+import com.jmb.domain.repository.WebSeviceRepository
 import javax.inject.Inject
 
 class SerieRemoteProxy @Inject constructor(
     private val remoteRepository: SerieRetrofitRepository,
     private val localRepository: SerieRoomRepository,
     private val internetRepository: InternetRepository
-) : SerieRemoteRepository<Serie> {
+) : WebSeviceRepository<Serie> {
 
 
     override suspend fun getAll(): List<Serie> {
