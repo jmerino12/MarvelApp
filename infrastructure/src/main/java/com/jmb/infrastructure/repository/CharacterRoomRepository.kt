@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class CharacterRoomRepository @Inject constructor(db: AppDatabase) :
+/*class CharacterRoomRepository @Inject constructor(db: AppDatabase) :
     CharacterLocalRepository, LocalRepository<Character> {
     private val marvelDao = db.marvelDao()
 
@@ -18,8 +18,8 @@ class CharacterRoomRepository @Inject constructor(db: AppDatabase) :
     override suspend fun isEmpty(): Boolean =
         withContext(Dispatchers.IO) { marvelDao.characterCount() <= 0 }
 
-    override suspend fun save(characters: List<Character>) = withContext(Dispatchers.IO) {
-        marvelDao.insertCharacters(characters.map { it.toRoom() })
+    override suspend fun save(data: List<Character>) = withContext(Dispatchers.IO) {
+        marvelDao.insertCharacters(data.map { it.toRoom() })
     }
 
     override suspend fun getAll(): List<Character> = withContext(Dispatchers.IO) {
@@ -31,4 +31,4 @@ class CharacterRoomRepository @Inject constructor(db: AppDatabase) :
     }
 
 
-}
+}*/

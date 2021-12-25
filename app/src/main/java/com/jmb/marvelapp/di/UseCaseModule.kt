@@ -1,5 +1,6 @@
 package com.jmb.marvelapp.di
 
+import com.jmb.domain.aggregates.Serie
 import com.jmb.domain.service.CharacterService
 import com.jmb.domain.service.SerieService
 import com.jmb.usecase.character.FindCharacter
@@ -17,9 +18,9 @@ class UseCaseModule {
     @Provides
     fun getSeriesProvider(service: SerieService): GetSeries = GetSeries(service)
 
-    @Provides
+    /*@Provides
     fun getCharacterProvider(service: CharacterService): GetCharacters = GetCharacters(service)
 
     @Provides
-    fun getCharacteProvider(service: CharacterService): FindCharacter = FindCharacter(service)
+    fun getCharacteProvider(service: CharacterService): FindCharacter = FindCharacter(service)*/
 }

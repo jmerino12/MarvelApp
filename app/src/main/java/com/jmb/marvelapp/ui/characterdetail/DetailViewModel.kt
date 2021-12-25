@@ -9,8 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
-class DetailViewModel @Inject constructor(
+class DetailViewModel constructor(
     private val savedStateHandle: SavedStateHandle,
     private val findCharacter: FindCharacter
 ) : ViewModel() {

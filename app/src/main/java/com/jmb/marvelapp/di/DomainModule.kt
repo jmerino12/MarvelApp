@@ -1,6 +1,7 @@
 package com.jmb.marvelapp.di
 
 import com.jmb.domain.aggregates.Character
+import com.jmb.domain.aggregates.Serie
 import com.jmb.domain.service.CharacterService
 import com.jmb.domain.service.SerieService
 import com.jmb.infrastructure.database.AppDatabase
@@ -17,37 +18,38 @@ import javax.inject.Named
 @InstallIn(SingletonComponent::class)
 class DomainModule {
     @Provides
-    fun seriesServiceProvider(serieProxy: SerieRemoteProxy): SerieService = SerieService(serieProxy)
+    fun seriesServiceProvider(serieProxy: SerieRemoteProxy<Serie>): SerieService =
+        SerieService(serieProxy)
 
-    @Provides
-    fun characterServiceProvider(
-        characterProxy: CharacterProxy,
-        characterRoomRepository: CharacterRoomRepository
-    ): CharacterService =
-        CharacterService(characterProxy, localRepository = characterRoomRepository)
+    /*  @Provides
+      fun characterServiceProvider(
+          characterProxy: CharacterProxy,
+          characterRoomRepository: CharacterRoomRepository
+      ): CharacterService =
+          CharacterService(characterProxy, localRepository = characterRoomRepository)
 
-    @Provides
-    fun serieRoomProvider(db: AppDatabase): SerieRoomRepository = SerieRoomRepository(db)
+      @Provides
+      fun characterRoomProvider(db: AppDatabase): CharacterRoomRepository =
+          CharacterRoomRepository(db)
 
-    @Provides
-    fun characterRoomProvider(db: AppDatabase): CharacterRoomRepository =
-        CharacterRoomRepository(db)
+     @Provides
+      fun characterRetrofitProvider(
+          theMarvelDb: TheMarvelDb,
+          @Named("apiKey") apikey: String,
+          @Named("hash") hash: String
+      ): CharacterRetrofitRepository =
+          CharacterRetrofitRepository(theMarvelDb, apikey, hash)*/
 
     @Provides
     fun serieRetrofitProvider(
         theMarvelDb: TheMarvelDb,
         @Named("apiKey") apikey: String,
         @Named("hash") hash: String
-    ): SerieRetrofitRepository =
+    ): SerieRetrofitRepository<Serie> =
         SerieRetrofitRepository(theMarvelDb, apikey, hash)
 
     @Provides
-    fun characterRetrofitProvider(
-        theMarvelDb: TheMarvelDb,
-        @Named("apiKey") apikey: String,
-        @Named("hash") hash: String
-    ): CharacterRetrofitRepository =
-        CharacterRetrofitRepository(theMarvelDb, apikey, hash)
+    fun serieRoomProvider(db: AppDatabase): SerieRoomRepository = SerieRoomRepository(db)
 
     @Provides
     fun internetProvider(androidCheckedInternet: AndroidCheckedInternet): InternetRepository =

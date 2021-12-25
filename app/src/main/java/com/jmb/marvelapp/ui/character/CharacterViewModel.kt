@@ -11,8 +11,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
-class CharacterViewModel @Inject constructor(private val getCharacters: GetCharacters) :
+
+class CharacterViewModel constructor(private val getCharacters: GetCharacters) :
     ViewModel() {
     private val _data = MutableLiveData<List<Character>>()
     val data: LiveData<List<Character>> = _data

@@ -4,7 +4,7 @@ import com.jmb.domain.aggregates.Character
 import com.jmb.domain.repository.WebSeviceRepository
 import javax.inject.Inject
 
-class CharacterProxy @Inject constructor(
+/*class CharacterProxy @Inject constructor(
     private val remoteRepository: CharacterRetrofitRepository,
     private val localRepository: CharacterRoomRepository,
     private val internetRepository: InternetRepository
@@ -20,4 +20,4 @@ class CharacterProxy @Inject constructor(
         }
         return localRepository.getAll()
     }
-}
+}*/
