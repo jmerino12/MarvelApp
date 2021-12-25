@@ -1,7 +1,5 @@
 package com.jmb.marvelapp.di
 
-import com.jmb.domain.aggregates.Character
-import com.jmb.domain.aggregates.Serie
 import com.jmb.domain.service.CharacterService
 import com.jmb.domain.service.SerieService
 import com.jmb.infrastructure.database.AppDatabase
@@ -18,15 +16,15 @@ import javax.inject.Named
 @InstallIn(SingletonComponent::class)
 class DomainModule {
     @Provides
-    fun seriesServiceProvider(serieProxy: SerieRemoteProxy<Serie>): SerieService =
+    fun seriesServiceProvider(serieProxy: SerieRemoteProxy): SerieService =
         SerieService(serieProxy)
 
-    /*  @Provides
+    @Provides
       fun characterServiceProvider(
           characterProxy: CharacterProxy,
           characterRoomRepository: CharacterRoomRepository
       ): CharacterService =
-          CharacterService(characterProxy, localRepository = characterRoomRepository)
+        CharacterService(characterProxy, characterRoomRepository)
 
       @Provides
       fun characterRoomProvider(db: AppDatabase): CharacterRoomRepository =
@@ -38,14 +36,14 @@ class DomainModule {
           @Named("apiKey") apikey: String,
           @Named("hash") hash: String
       ): CharacterRetrofitRepository =
-          CharacterRetrofitRepository(theMarvelDb, apikey, hash)*/
+         CharacterRetrofitRepository(theMarvelDb, apikey, hash)
 
     @Provides
     fun serieRetrofitProvider(
         theMarvelDb: TheMarvelDb,
         @Named("apiKey") apikey: String,
         @Named("hash") hash: String
-    ): SerieRetrofitRepository<Serie> =
+    ): SerieRetrofitRepository =
         SerieRetrofitRepository(theMarvelDb, apikey, hash)
 
     @Provides

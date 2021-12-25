@@ -6,7 +6,7 @@ import com.jmb.infrastructure.anticorruption.toDomain
 import com.jmb.infrastructure.server.TheMarvelDb
 import javax.inject.Inject
 
-/*class CharacterRetrofitRepository @Inject constructor(
+class CharacterRetrofitRepository @Inject constructor(
     private val theMarvelDb: TheMarvelDb,
     private val apiKey: String,
     private val hash: String
@@ -17,4 +17,4 @@ import javax.inject.Inject
             .data.results.map { it.toDomain() }
     }
 
-}*/
+}

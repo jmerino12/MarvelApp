@@ -9,7 +9,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class DetailViewModel constructor(
+@HiltViewModel
+class DetailViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val findCharacter: FindCharacter
 ) : ViewModel() {
@@ -22,7 +23,7 @@ class DetailViewModel constructor(
             try {
                 _data.value = findCharacter.invoke(savedStateHandle["id"]!!)
             } catch (e: Exception) {
-                Log.e("nbvnbv", e.message.toString())
+                Log.e("viewModelDetail", e.message.toString())
             }
         }
 

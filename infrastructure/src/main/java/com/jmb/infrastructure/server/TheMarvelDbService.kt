@@ -9,12 +9,12 @@ import retrofit2.http.Query
 interface TheMarvelDbService {
 
     @GET("series")
-    suspend fun <T> listSeries(
+    suspend fun listSeries(
         @Query("apikey") apiKey: String,
         @Query("hash") hash: String,
         @Query("ts") ts: String,
         @Query("limit") limit: String = "100"
-    ): SerieDbResult<T>
+    ): SerieDbResult<Serie>
 
     @GET("characters")
     suspend fun listCharacters(

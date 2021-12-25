@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-/*class CharacterRoomRepository @Inject constructor(db: AppDatabase) :
+class CharacterRoomRepository @Inject constructor(db: AppDatabase) :
     CharacterLocalRepository, LocalRepository<Character> {
     private val marvelDao = db.marvelDao()
 
@@ -31,4 +31,4 @@ import javax.inject.Inject
     }
 
 
-}*/
+}

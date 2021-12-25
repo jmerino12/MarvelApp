@@ -4,10 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.jmb.domain.aggregates.Serie
 import com.jmb.infrastructure.database.AppDatabase
-import com.jmb.infrastructure.repository.InternetRepository
-import com.jmb.infrastructure.repository.SerieRemoteProxy
-import com.jmb.infrastructure.repository.SerieRetrofitRepository
-import com.jmb.infrastructure.repository.SerieRoomRepository
+import com.jmb.infrastructure.repository.*
 import com.jmb.infrastructure.server.TheMarvelDb
 import com.jmb.marvelapp.R
 import dagger.Module
@@ -50,14 +47,27 @@ class InfrastructureModule {
 
     @Provides
     fun serieRemoteProxyProvider(
-        serieRetrofitRepository: SerieRetrofitRepository<Serie>,
+        serieRetrofitRepository: SerieRetrofitRepository,
         serieRoomRepository: SerieRoomRepository,
         internetRepository: InternetRepository
 
-    ): SerieRemoteProxy<Serie> =
+    ): SerieRemoteProxy =
         SerieRemoteProxy(
             remoteRepository = serieRetrofitRepository,
             localRepository = serieRoomRepository,
+            internetRepository = internetRepository
+        )
+
+    @Provides
+    fun characterRemoteProxyProvider(
+        characterRetrofitRepository: CharacterRetrofitRepository,
+        characterRoomRepository: CharacterRoomRepository,
+        internetRepository: InternetRepository
+
+    ): CharacterProxy =
+        CharacterProxy(
+            remoteRepository = characterRetrofitRepository,
+            localRepository = characterRoomRepository,
             internetRepository = internetRepository
         )
 }
