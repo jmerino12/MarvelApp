@@ -1,4 +1,4 @@
-package com.jmb.usecase.serieusecase
+package com.jmb.usecase.character
 
 import com.jmb.domain.aggregates.Character
 import com.jmb.domain.service.CharacterService

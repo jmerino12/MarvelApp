@@ -13,8 +13,7 @@ class SerieRetrofitRepository @Inject constructor(
 ) :
     SerieRemoteRepository<Serie> {
 
-
-    override suspend fun getData(): List<Serie> {
+    override suspend fun getAll(): List<Serie> {
         return theMarvelDb.service.listSeries(apiKey, hash, "1")
             .data.results.map { it.toDomain() }
     }

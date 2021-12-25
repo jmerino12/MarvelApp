@@ -22,4 +22,6 @@ interface TheMarvelDbService {
         @Query("ts") ts: String,
         @Query("limit") limit: String = "100"
     ): SerieDbResult<Character>
+
+
 }

@@ -1,7 +1,7 @@
 package com.jmb.infrastructure.repository
 
 import com.jmb.domain.aggregates.Character
-import com.jmb.domain.repository.SerieLocalRepository
+import com.jmb.domain.repository.CharacterLocalRepository
 import com.jmb.infrastructure.anticorruption.toDomain
 import com.jmb.infrastructure.anticorruption.toRoom
 import com.jmb.infrastructure.database.AppDatabase
@@ -10,15 +10,15 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class CharacterRoomRepository @Inject constructor(db: AppDatabase) :
-    SerieLocalRepository<Character> {
+    CharacterLocalRepository {
     private val marvelDao = db.marvelDao()
 
 
     override suspend fun isEmpty(): Boolean =
         withContext(Dispatchers.IO) { marvelDao.characterCount() <= 0 }
 
-    override suspend fun save(data: List<Character>) = withContext(Dispatchers.IO) {
-        marvelDao.insertCharacters(data.map { it.toRoom() })
+    override suspend fun save(characters: List<Character>) = withContext(Dispatchers.IO) {
+        marvelDao.insertCharacters(characters.map { it.toRoom() })
     }
 
     override suspend fun getAll(): List<Character> = withContext(Dispatchers.IO) {

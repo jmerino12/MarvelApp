@@ -1,4 +1,4 @@
-package com.jmb.usecase.serieusecase
+package com.jmb.usecase.serie
 
 import com.jmb.domain.aggregates.Serie
 import com.jmb.domain.service.SerieService

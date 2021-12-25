@@ -16,11 +16,14 @@ import javax.inject.Named
 @InstallIn(SingletonComponent::class)
 class DomainModule {
     @Provides
-    fun seriesServiceProvider(serieProxy: SerieProxy): SerieService = SerieService(serieProxy)
+    fun seriesServiceProvider(serieProxy: SerieRemoteProxy): SerieService = SerieService(serieProxy)
 
     @Provides
-    fun characterServiceProvider(characterProxy: CharacterProxy): CharacterService =
-        CharacterService(repository = characterProxy)
+    fun characterServiceProvider(
+        characterProxy: CharacterProxy,
+        characterRoomRepository: CharacterRoomRepository
+    ): CharacterService =
+        CharacterService(characterProxy, localRepository = characterRoomRepository)
 
     @Provides
     fun serieRoomProvider(db: AppDatabase): SerieRoomRepository = SerieRoomRepository(db)

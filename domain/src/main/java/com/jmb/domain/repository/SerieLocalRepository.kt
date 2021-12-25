@@ -1,9 +1,10 @@
 package com.jmb.domain.repository
 
+import com.jmb.domain.aggregates.Serie
 
-interface SerieLocalRepository<T> {
+
+interface SerieLocalRepository {
     suspend fun isEmpty(): Boolean
-    suspend fun save(data: List<T>)
-    suspend fun getAll(): List<T>
-    suspend fun findById(id: Int): T
+    suspend fun save(data: List<Serie>)
+    suspend fun getAll(): List<Serie>
 }

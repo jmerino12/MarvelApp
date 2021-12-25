@@ -1,13 +1,13 @@
 package com.jmb.domain.service
 
 import com.jmb.domain.aggregates.Serie
-import com.jmb.domain.repository.SerieRepository
+import com.jmb.domain.repository.SerieRemoteRepository
 
 class SerieService(
-    private val repository: SerieRepository<Serie>,
+    private val remoteRepository: SerieRemoteRepository<Serie>,
 ) {
 
     suspend fun getSeries(): List<Serie> {
-        return repository.getAll()
+        return remoteRepository.getAll()
     }
 }

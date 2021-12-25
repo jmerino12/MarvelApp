@@ -10,7 +10,7 @@ import com.jmb.marvelapp.databinding.ItemSerieBinding
 import com.jmb.marvelapp.ui.common.BaseViewHolder
 import com.jmb.marvelapp.ui.common.loadUrl
 
-class CharacterAdapter :
+class CharacterAdapter(private val listener: (Character) -> Unit) :
     ListAdapter<Character, BaseViewHolder<*>>(
         SerieDiffCallback
     ) {
@@ -48,7 +48,7 @@ class CharacterAdapter :
     }
 
 
-    class SerieViewHolder(
+    inner class SerieViewHolder(
         private val binding: ItemSerieBinding
     ) :
         BaseViewHolder<Character>(binding.root) {
@@ -57,6 +57,7 @@ class CharacterAdapter :
             binding.title.text = item.name
             val rute = "${item.thumbnail.path}/portrait_incredible.${item.thumbnail.extension}"
             binding.poster.loadUrl(rute)
+            binding.root.setOnClickListener { listener(item) }
         }
     }
 

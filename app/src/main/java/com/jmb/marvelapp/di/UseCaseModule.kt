@@ -2,8 +2,9 @@ package com.jmb.marvelapp.di
 
 import com.jmb.domain.service.CharacterService
 import com.jmb.domain.service.SerieService
-import com.jmb.usecase.serieusecase.GetCharacters
-import com.jmb.usecase.serieusecase.GetSeries
+import com.jmb.usecase.character.FindCharacter
+import com.jmb.usecase.character.GetCharacters
+import com.jmb.usecase.serie.GetSeries
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,4 +19,7 @@ class UseCaseModule {
 
     @Provides
     fun getCharacterProvider(service: CharacterService): GetCharacters = GetCharacters(service)
+
+    @Provides
+    fun getCharacteProvider(service: CharacterService): FindCharacter = FindCharacter(service)
 }

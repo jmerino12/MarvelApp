@@ -9,14 +9,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class SerieRoomRepository @Inject constructor(db: AppDatabase) : SerieLocalRepository<Serie> {
+class SerieRoomRepository @Inject constructor(db: AppDatabase) : SerieLocalRepository {
     private val marvelDao = db.marvelDao()
 
     override suspend fun isEmpty(): Boolean =
         withContext(Dispatchers.IO) { marvelDao.serieCount() <= 0 }
 
-    override suspend fun save(series: List<Serie>) = withContext(Dispatchers.IO) {
-        marvelDao.insertSeries(series.map { it.toRoom() })
+    override suspend fun save(data: List<Serie>) = withContext(Dispatchers.IO) {
+        marvelDao.insertSeries(data.map { it.toRoom() })
     }
 
     override suspend fun getAll(): List<Serie> = withContext(Dispatchers.IO) {
@@ -24,10 +24,5 @@ class SerieRoomRepository @Inject constructor(db: AppDatabase) : SerieLocalRepos
             it.toDomain()
         }
     }
-
-    override suspend fun findById(id: Int): Serie = withContext(Dispatchers.IO) {
-        marvelDao.getSerieById(id).toDomain()
-    }
-
 
 }

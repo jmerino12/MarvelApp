@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmb.domain.aggregates.Serie
-import com.jmb.usecase.serieusecase.GetSeries
+import com.jmb.usecase.serie.GetSeries
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
