@@ -36,5 +36,6 @@ android {
 dependencies {
     implementation project(":domain")
     implementation libs.values()
+    testImplementation testLibs.values()
     kapt androidKaptLibs.values()
 }
