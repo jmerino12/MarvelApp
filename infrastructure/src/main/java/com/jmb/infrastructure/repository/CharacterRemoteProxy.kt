@@ -6,7 +6,7 @@ import com.jmb.domain.repository.LocalRepository
 import com.jmb.domain.repository.WebSeviceRepository
 import javax.inject.Inject
 
-class CharacterProxy @Inject constructor(
+class CharacterRemoteProxy @Inject constructor(
     private val remoteRepository: CharacterRetrofitRepository,
     private val localRepository: LocalRepository<Character>,
     private val internetRepository: InternetRepository

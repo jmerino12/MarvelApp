@@ -24,16 +24,6 @@ data class Serie(
     )
 }
 
-@Entity
-data class Character(
-    @PrimaryKey val id: Int,
-    val name: String,
-    val description: String,
-    val modified: String,
-    val resourceURI: String,
-    @Embedded(prefix = "thumbnail_")
-    val thumbnail: Serie.Thumbnail
-)
 
 
 

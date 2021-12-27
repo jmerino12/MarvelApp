@@ -20,11 +20,11 @@ class DomainModule {
         SerieService(serieProxy)
 
     @Provides
-      fun characterServiceProvider(
-          characterProxy: CharacterProxy,
-          characterRoomRepository: CharacterRoomRepository
-      ): CharacterService =
-        CharacterService(characterProxy, characterRoomRepository)
+    fun characterServiceProvider(
+        characterRemoteProxy: CharacterRemoteProxy,
+        characterRoomRepository: CharacterRoomRepository
+    ): CharacterService =
+        CharacterService(characterRemoteProxy, characterRoomRepository)
 
       @Provides
       fun characterRoomProvider(db: AppDatabase): CharacterRoomRepository =

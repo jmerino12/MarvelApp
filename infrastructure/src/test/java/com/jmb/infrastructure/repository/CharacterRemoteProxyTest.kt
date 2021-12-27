@@ -14,7 +14,7 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class CharacterProxyTest {
+class CharacterRemoteProxyTest {
 
 
     @Mock
@@ -26,7 +26,7 @@ class CharacterProxyTest {
     @Mock
     lateinit var internetRepository: InternetRepository
 
-    private lateinit var characterProxy: CharacterProxy
+    private lateinit var characterRemoteProxy: CharacterRemoteProxy
 
     private val character =
         Character(
@@ -41,8 +41,8 @@ class CharacterProxyTest {
 
     @Before
     fun setUp() {
-        characterProxy =
-            CharacterProxy(characterRetrofitRepository, localRepository, internetRepository)
+        characterRemoteProxy =
+            CharacterRemoteProxy(characterRetrofitRepository, localRepository, internetRepository)
     }
 
     @Test
@@ -52,7 +52,7 @@ class CharacterProxyTest {
         whenever(internetRepository.checkConnectionInternet()).thenReturn(true)
         whenever(localRepository.isEmpty()).thenReturn(true)
         whenever(characterRetrofitRepository.getAll()).thenReturn(remoteCharacters)
-        characterProxy.getAll()
+        characterRemoteProxy.getAll()
 
         verify(localRepository).save(remoteCharacters)
     }

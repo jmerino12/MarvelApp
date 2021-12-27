@@ -2,7 +2,6 @@ package com.jmb.marvelapp.di
 
 import android.app.Application
 import androidx.room.Room
-import com.jmb.domain.aggregates.Serie
 import com.jmb.infrastructure.database.AppDatabase
 import com.jmb.infrastructure.repository.*
 import com.jmb.infrastructure.server.TheMarvelDb
@@ -64,8 +63,8 @@ class InfrastructureModule {
         characterRoomRepository: CharacterRoomRepository,
         internetRepository: InternetRepository
 
-    ): CharacterProxy =
-        CharacterProxy(
+    ): CharacterRemoteProxy =
+        CharacterRemoteProxy(
             remoteRepository = characterRetrofitRepository,
             localRepository = characterRoomRepository,
             internetRepository = internetRepository
