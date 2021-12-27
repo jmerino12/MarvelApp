@@ -3,6 +3,8 @@ package com.jmb.marvelapp.ui.character
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.jmb.domain.aggregates.Character
@@ -13,7 +15,9 @@ import com.jmb.marvelapp.ui.common.loadUrl
 class CharacterAdapter(private val listener: (Character) -> Unit) :
     ListAdapter<Character, BaseViewHolder<*>>(
         SerieDiffCallback
-    ) {
+    ), Filterable {
+    var mListRef: List<Character>? = null
+    var listCharactersCopy: List<Character>? = null
 
     companion object {
         private val SerieDiffCallback = object : DiffUtil.ItemCallback<Character>() {
@@ -58,6 +62,38 @@ class CharacterAdapter(private val listener: (Character) -> Unit) :
             val rute = "${item.thumbnail.path}/portrait_incredible.${item.thumbnail.extension}"
             binding.poster.loadUrl(rute)
             binding.root.setOnClickListener { listener(item) }
+        }
+    }
+
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val filterResults = FilterResults()
+                if (constraint == null || constraint.isEmpty()) {
+                    listCharactersCopy = mListRef
+                    filterResults.count = listCharactersCopy!!.size
+                    filterResults.values = listCharactersCopy
+                } else {
+                    val search = constraint.toString().lowercase()
+
+                    val characterList = ArrayList<Character>()
+                    for (item in listCharactersCopy!!) {
+                        if (item.name.lowercase().contains(search)) {
+                            characterList.add(item)
+                        }
+                    }
+                    filterResults.count = characterList.size
+                    filterResults.values = characterList
+                }
+                return filterResults
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                mListRef = results!!.values as ArrayList<Character>
+                submitList(mListRef)
+            }
+
         }
     }
 
