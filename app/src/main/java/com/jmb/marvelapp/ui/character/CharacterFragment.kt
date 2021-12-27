@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.jmb.domain.aggregates.Character
 import com.jmb.marvelapp.R
 import com.jmb.marvelapp.databinding.FragmentCharacterBinding
+import com.jmb.marvelapp.ui.common.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.Exception
 
@@ -36,12 +37,22 @@ class CharacterFragment : Fragment() {
         _binding = FragmentCharacterBinding.inflate(inflater, container, false)
         model.getSeries()
         binding.rvCharacter.adapter = adapter
-        model.data.observe(viewLifecycleOwner, {
-            adapter.listCharactersCopy = it
-            adapter.mListRef = it
-            adapter.submitList(it)
-        })
+        model.data.observe(viewLifecycleOwner, ::updateUi)
         return binding.root
+    }
+
+    private fun updateUi(uiState: UiState<List<Character>>) {
+        binding.loading.visibility = if (uiState is UiState.Loading) View.VISIBLE else View.GONE
+        when (uiState) {
+            is UiState.Success -> {
+                adapter.listCharactersCopy = uiState.data
+                adapter.mListRef = uiState.data
+                adapter.submitList(uiState.data)
+            }
+            is UiState.Error -> {
+                Toast.makeText(context, uiState.error.toString(), Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun navigateToDetail(character: Character) {

@@ -1,10 +1,9 @@
 package com.jmb.marvelapp.ui.characterdetail
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.jmb.domain.aggregates.Character
+import com.jmb.marvelapp.ui.common.UiState
 import com.jmb.usecase.character.FindCharacter
-import dagger.assisted.Assisted
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -14,16 +13,17 @@ class DetailViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val findCharacter: FindCharacter
 ) : ViewModel() {
-    private val _data = MutableLiveData<Character>()
-    val data: LiveData<Character> = _data
+    private val _data = MutableLiveData<UiState<Character>>()
+    val data: LiveData<UiState<Character>> = _data
 
 
     fun getSeries() {
         viewModelScope.launch {
+            _data.value = UiState.Loading
             try {
-                _data.value = findCharacter.invoke(savedStateHandle["id"]!!)
+                _data.value = UiState.Success(findCharacter.invoke(savedStateHandle["id"]!!))
             } catch (e: Exception) {
-                Log.e("viewModelDetail", e.message.toString())
+                _data.value = UiState.Error(e)
             }
         }
 
